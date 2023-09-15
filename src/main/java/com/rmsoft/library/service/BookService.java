@@ -129,7 +129,7 @@ public class BookService {
 
             return ResponseDto.setSuccess("도서등록되었습니다.", saveBook);
         } catch(Exception e) {
-            return ResponseDto.setFailed("DataBase Error!");
+            return ResponseDto.setFailed(e.getMessage());
         }
     }
 
