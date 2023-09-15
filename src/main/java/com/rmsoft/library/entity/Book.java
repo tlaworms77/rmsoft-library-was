@@ -5,10 +5,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.w3c.dom.Text;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.sql.Blob;
 import java.util.Date;
 
 @Data
@@ -29,6 +31,10 @@ public class Book {
     private String bookLocation;
     private String fileName;
     private String filePath;
+    @Lob
+    @Basic(fetch = FetchType.LAZY)
+    @Column(name = "fileImage", columnDefinition = "TEXT")
+    private String fileImage;
     private String borrowYn;
     private Long historySq;
     private String insertId;

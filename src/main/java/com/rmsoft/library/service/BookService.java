@@ -117,23 +117,16 @@ public class BookService {
                 book.setFileName(fileName);
                 book.setFilePath("/outputs/" + fileName);
             } else if(file != null) {
-                log.info("1");
                 String fileUploadPath = null;
                 //파일저장
-                log.info("2");
                 fileUploadPath = System.getProperty("user.dir") + "/src/main/resources/static/outputs";
                 String uploadFilePath = Paths.get(fileUploadPath).toAbsolutePath().toString();
                 Path deleteFilePath = Paths.get(uploadFilePath);
-                log.info("3");
                 UUID uuid = UUID.randomUUID();
-                log.info("4");
                 String fileName = uuid + "_" + file.getOriginalFilename(); //파일이름 재정의
-                log.info("5");
                 File saveFile = new File(uploadFilePath, fileName); //파일경로, 파일명
-                log.info("6");
                 FileUtils.forceMkdirParent(saveFile);
                 file.transferTo(saveFile);
-                log.info("7");
 
                 //Book Entity에서 저장
                 book.setFileName(fileName);
