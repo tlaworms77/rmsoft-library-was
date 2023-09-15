@@ -10,6 +10,7 @@ import com.rmsoft.library.repository.BookRepository;
 import com.rmsoft.library.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
@@ -122,6 +123,7 @@ public class BookService {
                 log.info("2");
                 fileUploadPath = System.getProperty("user.dir") + "/src/main/resources/static/outputs";
                 String uploadFilePath = Paths.get(fileUploadPath).toAbsolutePath().toString();
+                Path deleteFilePath = Paths.get(uploadFilePath);
                 log.info("3");
                 UUID uuid = UUID.randomUUID();
                 log.info("4");
@@ -129,6 +131,7 @@ public class BookService {
                 log.info("5");
                 File saveFile = new File(uploadFilePath, fileName); //파일경로, 파일명
                 log.info("6");
+                FileUtils.forceMkdirParent(saveFile);
                 file.transferTo(saveFile);
                 log.info("7");
 
