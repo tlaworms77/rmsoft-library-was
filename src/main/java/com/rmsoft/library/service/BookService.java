@@ -112,15 +112,17 @@ public class BookService {
                 book.setFileName(fileName);
                 book.setFilePath("/outputs/" + fileName);
             } else if(file != null) {
-                // 오리진 파일 삭제
-                String filePath = originBook.getFilePath();
-                String fileDeletePath = System.getProperty("user.dir") + "/src/main/resources/static" + filePath;
-                File deleteFile = new File(fileDeletePath);
-                boolean isDelete = deleteFile.delete();
+                String fileUploadPath = null;
+                //파일저장
+                fileUploadPath = System.getProperty("user.dir") + "/src/main/resources/static/outputs";
+                UUID uuid = UUID.randomUUID();
+                String fileName = uuid + "_" + file.getOriginalFilename(); //파일이름 재정의
+                File saveFile = new File(fileUploadPath, fileName); //파일경로, 파일명
+                file.transferTo(saveFile);
 
                 //Book Entity에서 저장
-                book.setFileName(null);
-                book.setFilePath(null);
+                book.setFileName(fileName);
+                book.setFilePath("/outputs/" + fileName);
             }
 
             Book saveBook = bookRepository.save(book);
