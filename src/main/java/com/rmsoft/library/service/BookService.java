@@ -128,7 +128,7 @@ public class BookService {
                 log.info("5");
                 File saveFile = new File(fileUploadPath, fileName); //파일경로, 파일명
                 log.info("6");
-                file.transferTo(saveFile);
+                file.transferTo(saveFile.toPath());
                 log.info("7");
 
                 //Book Entity에서 저장
