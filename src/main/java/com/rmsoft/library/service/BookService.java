@@ -15,6 +15,9 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -86,19 +89,18 @@ public class BookService {
                 // 오리진 파일 삭제
                 String filePath = originBook.getFilePath();
                 String fileDeletePath = System.getProperty("user.dir") + "/src/main/resources/static" + filePath;
-                File deleteFile = new File(fileDeletePath);
-                boolean isDelete = deleteFile.delete();
+                Path deleteFilePath = Paths.get(fileDeletePath);
+                Files.deleteIfExists(deleteFilePath);
 
                 // Book Entity 파일 제거
                 book.setFileName(null);
                 book.setFilePath(null);
             } else if(StringUtils.hasText(originBook.getFileName()) && file != null) {
-
                 // 오리진 파일 삭제
                 String filePath = originBook.getFilePath();
                 String fileDeletePath = System.getProperty("user.dir") + "/src/main/resources/static" + filePath;
-                File deleteFile = new File(fileDeletePath);
-                boolean isDelete = deleteFile.delete();
+                Path deleteFilePath = Paths.get(fileDeletePath);
+                Files.deleteIfExists(deleteFilePath);
 
                 String fileUploadPath = null;
                 //파일저장
