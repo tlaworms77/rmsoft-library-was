@@ -28,6 +28,7 @@ public class AuthService {
 
     public ResponseDto<?> login(@RequestBody LoginDto loginDto) {
         try {
+            System.out.println("test");
             String userId = loginDto.getUserId();
             String userPassword = loginDto.getUserPassword();
 
