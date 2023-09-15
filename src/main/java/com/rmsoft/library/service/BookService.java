@@ -121,14 +121,15 @@ public class BookService {
                 //파일저장
                 log.info("2");
                 fileUploadPath = System.getProperty("user.dir") + "/src/main/resources/static/outputs";
+                String uploadFilePath = Paths.get(fileUploadPath).toAbsolutePath().toString();
                 log.info("3");
                 UUID uuid = UUID.randomUUID();
                 log.info("4");
                 String fileName = uuid + "_" + file.getOriginalFilename(); //파일이름 재정의
                 log.info("5");
-                File saveFile = new File(fileUploadPath, fileName); //파일경로, 파일명
+                File saveFile = new File(uploadFilePath, fileName); //파일경로, 파일명
                 log.info("6");
-                file.transferTo(saveFile.toPath());
+                file.transferTo(saveFile);
                 log.info("7");
 
                 //Book Entity에서 저장
