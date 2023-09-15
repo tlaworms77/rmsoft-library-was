@@ -20,7 +20,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name="User")
-@Table(name = "User")
+@Table(name = "user")
 public class User {
     @Id
     private String userId;
