@@ -27,6 +27,6 @@ public class AuthController {
 
     @GetMapping("/deployTest")
     public String deploy() {
-        return "deploySuccess!!";
+        return "deploySuccess!!!!!!";
     }
 }
