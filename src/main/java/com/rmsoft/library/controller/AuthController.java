@@ -24,9 +24,4 @@ public class AuthController {
         return authService.join(joinDto);
     }
 
-
-    @GetMapping("/deployTest")
-    public String deploy() {
-        return "deploySuccess!";
-    }
 }
