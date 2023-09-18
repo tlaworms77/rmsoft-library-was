@@ -55,7 +55,7 @@ public class JwtProvider {
             claims = Jwts.parser()
                     .setSigningKey(SECURITY_KEY).parseClaimsJws(jwtToken).getBody();
         } catch(Exception exception) {
-            log.info("JwtProvider validate: " + exception.getMessage());
+//            log.info("JwtProvider validate: " + exception.getMessage());
             return null;
         }
 

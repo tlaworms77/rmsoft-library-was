@@ -23,4 +23,10 @@ public class AuthController {
     public ResponseDto<?> join(@RequestBody JoinDto joinDto) {
         return authService.join(joinDto);
     }
+
+
+    @GetMapping("/deployTest")
+    public String deploy() {
+        return "deploySuccess!!";
+    }
 }
